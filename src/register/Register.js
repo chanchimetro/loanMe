@@ -42,7 +42,7 @@ function Register() {
                         <input type="password" className="form-control" id="password" />
                     </div>
                     <div class="mb-3">
-                        <label for="disabledSelect" class="form-label">Tipo de usuario</label>
+                        <label class="form-label">Tipo de usuario</label>
                         <select id="tipoUsuario" class="form-select">
                             <option selected>Seleccione un tipo de usuario</option>
                             <option value="Prestatario">Prestatario</option>
