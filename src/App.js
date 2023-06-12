@@ -1,7 +1,9 @@
+import { useState } from 'react';
 import './App.css';
 import Register from "./register/Register"
 
 function App() {
+  const [regis, setRegis] = useState(true);
   return (
     <div className="App">
       <nav className="navbar navbar-expand-lg bg-body-tertiary">
@@ -20,10 +22,10 @@ function App() {
               </li>
             </ul>
             <div className="d-flex">
-              <button type="button" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#exampleModal">
+              <button type="button" class="btn btn-link" data-bs-toggle="modal" onClick={() => setRegis(false)} data-bs-target="#authModal">
                 Login
               </button>
-              <button type="button" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#exampleModal">
+              <button type="button" class="btn btn-link" data-bs-toggle="modal" onClick={() => setRegis(true)} data-bs-target="#authModal">
                 Register
               </button>
             </div>
@@ -31,10 +33,10 @@ function App() {
         </div>
       </nav>
       
-      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal fade" id="authModal" tabindex="-1" aria-labelledby="authModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content p-md-3">
-            <Register/>
+            {regis ? <Register/> : <p>2</p>}
           </div>
         </div>
       </div>
