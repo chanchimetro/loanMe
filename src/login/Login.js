@@ -24,6 +24,7 @@ function Login() {
         //console.log(postData(url, data));
         postData(url, data).then((r) => {
             console.log(r);
+            if(r.response.data === "User does not exist"){ alert(r.response.data) } 
         });
         //if(repsonse.response.status)
     }
