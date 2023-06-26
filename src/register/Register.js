@@ -51,28 +51,19 @@ function Register() {
                                     <label className="form-label">Tipo de usuario</label>
                                     <select id="tipoUsuario" className="form-select">
                                         <option selected>Seleccione un tipo de usuario</option>
-                                        <option value="Prestatario" onclick={()=>setPrestamista(false)}>Prestatario</option>
-                                        <option value="Prestamista" onClick={()=>setPrestamista(true)}>Prestamista</option>
+                                        <option value="Prestatario" onclick={() => setPrestamista(false)}>Prestatario</option>
+                                        <option value="Prestamista" onClick={() => setPrestamista(true)}>Prestamista</option>
                                     </select>
                                 </div>
-                                <button className="btn btn-link float-end" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-                                    Next →
-                                </button>
                             </div>
-                            {prestamista ? 
-                            <div className="carousel-item">
-                                <div>prestamista si</div>
-                                <button className="btn btn-link float-end" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-                                    Next →
-                                </button>
-                            </div>
-                            : 
-                            <div className="carousel-item">
-                            <button className="btn btn-link float-end" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-                                    Next →
-                                </button>
-                            </div>
-
+                            {prestamista ?
+                                <div className="carousel-item">
+                                    <div>prestamista si</div>
+                                </div>
+                                :
+                                <div className="carousel-item">
+                                    <p>NO</p>
+                                </div>
                             }
                             <div className="carousel-item">
 
@@ -81,6 +72,12 @@ function Register() {
                                 <button type="submit" className="btn btn-primary float-end">Submit</button>
                             </div>
                         </div>
+                        <button className="btn btn-link float-start" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                            ← Back
+                        </button>
+                        <button className="btn btn-link float-end" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                            Next →
+                        </button>
                     </form>
                 </div>
             </div>
