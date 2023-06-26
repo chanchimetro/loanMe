@@ -29,7 +29,7 @@ function Register() {
         <div className="Register">
             <h2 className="card-title">Register</h2>
             <hr></hr>
-            <div className="card-body text-start p -md-4">
+            <div className="card-body text-start p-md-4">
                 <div id="carouselExampleIndicators" className="carousel carousel-dark slide">
                     <form onSubmit={(e) => handleChanges(e)}>
                         <div className="carousel-inner">
@@ -37,6 +37,10 @@ function Register() {
                                 <div className="mb-3">
                                     <label className="form-label">Username</label>
                                     <input type="text" className="form-control" id="username" />
+                                </div>
+                                <div className="mb-3">
+                                    <label className="form-label">Full name</label>
+                                    <input type="text" className="form-control" id="fullname" />
                                 </div>
                                 <div className="mb-3">
                                     <label className="form-label">Email address</label>
@@ -49,24 +53,36 @@ function Register() {
                                 </div>
                                 <div className="mb-3">
                                     <label className="form-label">Tipo de usuario</label>
-                                    <select id="tipoUsuario" className="form-select">
+                                    <select id="tipoUsuario" className="form-select" onChange={(e) => setPrestamista(e.target.value === "Prestamista")}>
                                         <option selected>Seleccione un tipo de usuario</option>
-                                        <option value="Prestatario" onclick={() => setPrestamista(false)}>Prestatario</option>
-                                        <option value="Prestamista" onClick={() => setPrestamista(true)}>Prestamista</option>
+                                        <option value="Prestatario">Prestatario</option>
+                                        <option value="Prestamista">Prestamista</option>
                                     </select>
                                 </div>
                             </div>
-                            {prestamista ?
-                                <div className="carousel-item">
-                                    <div>prestamista si</div>
-                                </div>
+                            {!prestamista ?
+                                <></>
                                 :
                                 <div className="carousel-item">
-                                    <p>NO</p>
+                                    <div className="mb-3">
+                                        <label className="form-label">Bank extract</label>
+                                        <input type="text" className="form-control" id="bankExtract"/>
+                                    </div>
+                                    <div className="mb-3">
+                                        <label className="form-label">Occupation</label>
+                                        <input type="text" className="form-control" id="occupation"/>
+                                    </div>
+                                    <div className="mb-3">
+                                        <label className="form-label">Brief financial description of yourself</label>
+                                        <input type="text" className="form-control" id="bankExtract"/>
+                                    </div>
                                 </div>
                             }
                             <div className="carousel-item">
-
+                                <div className="mb-3">
+                                    <label className="form-label">Wallet address</label>
+                                    <input type="text" className="form-control" id="wallet" />
+                                </div>
                             </div>
                             <div className="carousel-item">
                                 <button type="submit" className="btn btn-primary float-end">Submit</button>
