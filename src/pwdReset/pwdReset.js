@@ -17,7 +17,6 @@ function pwdReset() {
     function handleChanges(e) {
         e.preventDefault();
         let data = {
-
             contrasenna: e.target.password.value,
             nuevaContrasenna: e.target.newPassword.value,
         };

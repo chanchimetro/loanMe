@@ -28,10 +28,10 @@ function Navbar({ setUser }){
                     </li>
                     </ul>
                     <div className="d-flex">
-                    <button type="button" class="btn btn-link" data-bs-toggle="modal" onClick={() => setRegis(false)} data-bs-target="#authModal">
+                    <button type="button" className="btn btn-link" data-bs-toggle="modal" onClick={() => setRegis(false)} data-bs-target="#authModal">
                         Login
                     </button>
-                    <button type="button" class="btn btn-link" data-bs-toggle="modal" onClick={() => setRegis(true)} data-bs-target="#authModal">
+                    <button type="button" className="btn btn-link" data-bs-toggle="modal" onClick={() => setRegis(true)} data-bs-target="#authModal">
                         Register
                     </button>
                     </div>
@@ -39,9 +39,9 @@ function Navbar({ setUser }){
                 </div>
             </nav>
             
-            <div class="modal fade" id="authModal" tabindex="-1" aria-labelledby="authModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                <div class="modal-content p-md-3">
+            <div className="modal fade" id="authModal" tabindex="-1" aria-labelledby="authModalLabel" aria-hidden="true">
+                <div className="modal-dialog">
+                <div className="modal-content p-md-3">
                     {regis ? <Register/> : <Login setUser={setUser}/>}
                 </div>
                 </div>

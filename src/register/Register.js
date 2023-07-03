@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./Register.css";
 import axios from 'axios';
 
-let url = "https://10.152.2.102:4433/api/auth/registro";
+let url = "http://10.152.2.101:4433/api/auth/registro";
 
 
 async function postData(url = "", data = {}) {
@@ -15,21 +15,21 @@ function Register() {
 
     function handleChanges(e) {
         e.preventDefault();
-        let data = {
+        let Usuario = {
             email: e.target.email.value,
             nombreusuario: e.target.username.value,
             contrasenna: e.target.password.value,
             tipousuario: e.target.tipoUsuario.value
         };
-        let credit = {
+        let perfil = {
             dni: e.target.dni.value,
             historialcrediticio: e.target.historial.value,
             extractobancario: e.target.extracto.value,
             comprobantedeingreso: e.target.comprobante.value,
             descripcionfinanciera: e.target.desc.value
         }
-        console.log(JSON.stringify(data))
-        console.log(postData(url, {data, credit}));
+        console.log("XD", JSON.stringify({Usuario, perfil}))
+        console.log(postData(url, {Usuario, perfil}));
     }
 
     return (
@@ -52,7 +52,7 @@ function Register() {
                                 <div className="mb-3">
                                     <label className="form-label">Email</label>
                                     <input type="email" className="form-control" id="email" aria-describedby="emailHelp" />
-                                    <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
+                                    <div id="emailHelp" className="form-text">lorem ipsum dolor sit amet.</div>
                                 </div>
                                 <div className="mb-3">
                                     <label className="form-label">Contraseña</label>
@@ -98,8 +98,6 @@ function Register() {
                                     <label className="form-label">DNI</label>
                                     <input type="text" className="form-control" id="dni" />
                                 </div>
-                            </div>
-                            <div className="carousel-item">
                                 <button type="submit" className="btn btn-primary float-end">Submit</button>
                             </div>
                         </div>

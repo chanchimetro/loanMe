@@ -1,7 +1,7 @@
 import "./Login.css";
 import axios from 'axios';
 
-let url = "http://10.152.2.105:4433/api/auth/login";
+let url = "http://10.152.2.101:4433/api/auth/login";
 
 async function postData(url = "", data = {}) {
     try {
@@ -15,20 +15,20 @@ function Login({ setUser }) {
 
     function handleChanges(e) {
         e.preventDefault();
-        let data = {
+        let Usuario = {
             nombreusuario: e.target.username.value,
             contrasenna: e.target.password.value,
         };
-        console.log(JSON.stringify(data))
+        console.log(JSON.stringify({Usuario}))
 
-        postData(url, data).then((r) => {
+        postData(url, {Usuario}).then((r) => {
             console.log(r);
-            if(r.response.data === "User does not exist")
+            if(r.request.status != 200)
             { alert(r.response.data) }
             else {
                 setUser({
                     nombreusuario: e.target.username.value,
-                    sessionID: r
+                    sessionID: r.data.sessionId
                 });
             } 
         });
@@ -36,7 +36,7 @@ function Login({ setUser }) {
 
     return (
         <div className="Register">
-            <h2 className="card-title">Register</h2>
+            <h2 className="card-title">Login</h2>
             <hr></hr>
             <div className="card-body text-start py-md-4">
                 <form onSubmit={(e) => handleChanges(e)}>
