@@ -13,7 +13,7 @@ function App() {
         <Navbar setUser={setUser}/>
         <Routes>
           <Route index element={<Home user={user}/>}></Route>
-          <Route path="/perfil" element={<Perfil/>}></Route>
+          <Route path="/perfil" element={<Perfil user= {user}/>}></Route>
           <Route path="/*" element={<p>404 ¯\_(ツ)_/¯</p>}></Route>
         </Routes>
       </BrowserRouter>

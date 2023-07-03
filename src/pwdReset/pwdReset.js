@@ -12,11 +12,12 @@ async function postData(url = "", data = {}) {
     //return resp;
 }
 
-function pwdReset() {
+function PwdReset({user}) {
 
     function handleChanges(e) {
         e.preventDefault();
         let data = {
+            username: user,
             contrasenna: e.target.password.value,
             nuevaContrasenna: e.target.newPassword.value,
         };
@@ -30,24 +31,24 @@ function pwdReset() {
     }
 
     return (
-        <div className="Register">
-            <h2 className="card-title">Reestablecer Contraseña</h2>
-            <hr></hr>
-            <div className="card-body text-start py-md-4">
-                <form onSubmit={(e) => handleChanges(e)}>
-                    <div className="mb-3">
-                        <label className="form-label">Contraseña actual</label>
-                        <input type="password" className="form-control" id="password" />
-                    </div>
-                    <div className="mb-3">
-                        <label className="form-label">Nueva contraseña</label>
-                        <input type="password" className="form-control" id="newPassword" />
-                    </div>
-                    <button type="submit" className="btn btn-primary float-end">Submit</button>
-                </form>
+            <div className="changePwd">
+                <h2 className="card-title">Reestablecer Contraseña</h2>
+                <hr></hr>
+                <div className="card-body text-start py-md-4">
+                    <form onSubmit={(e) => handleChanges(e)}>
+                        <div className="mb-3">
+                            <label className="form-label">Contraseña actual</label>
+                            <input type="password" className="form-control" id="password" />
+                        </div>
+                        <div className="mb-3">
+                            <label className="form-label">Nueva contraseña</label>
+                            <input type="password" className="form-control" id="newPassword" />
+                        </div>
+                        <button type="submit" className="btn btn-primary float-end">Submit</button>
+                    </form>
+                </div>
             </div>
-        </div>
     );
 }
 
-export default pwdReset;
+export default PwdReset;
