@@ -1,0 +1,23 @@
+section {
+    background-color: #eee;
+}
+
+img {
+    width: 150px;
+}
+
+.fa-github {
+    color: #333333;
+}
+
+.fa-twitter {
+    color: #55acee;
+}
+
+.fa-instagram {
+    color: #ac2bac;
+}
+
+.fa-facebook {
+    color: #3b5998;
+}

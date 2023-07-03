@@ -1,24 +1,18 @@
+import React from 'react';
 import { useState } from 'react';
 import './Navbar.css';
 import Register from "../register/Register"
 import Login from "../login/Login"
-import Perfil from "../perfil/Perfil";
-import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
+import logo from "../LoanMe.svg"
+import { Link } from "react-router-dom";
 
 function Navbar(){
-
         const [regis, setRegis] = useState(true);
-        <BrowserRouter>
-            <Routes>
-                <Route path="/perfil" element={<Perfil/>}></Route>
-            </Routes>
-        </BrowserRouter>
         return (
-
             <div className="App">
             <nav className="navbar navbar-expand-lg bg-body-tertiary">
                 <div className="container-fluid">
-                <a className="navbar-brand" href="#">Navbar</a>
+                <Link className="navbar-brand" to=""><img src={logo}></img></Link>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
