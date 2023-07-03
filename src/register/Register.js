@@ -21,8 +21,15 @@ function Register() {
             contrasenna: e.target.password.value,
             tipousuario: e.target.tipoUsuario.value
         };
+        let credit = {
+            dni: e.target.dni.value,
+            historialcrediticio: e.target.historial.value,
+            extractobancario: e.target.extracto.value,
+            comprobantedeingreso: e.target.comprobante.value,
+            descripcionfinanciera: e.target.desc.value
+        }
         console.log(JSON.stringify(data))
-        console.log(postData(url, data));
+        console.log(postData(url, {data, credit}));
     }
 
     return (
@@ -35,20 +42,20 @@ function Register() {
                         <div className="carousel-inner">
                             <div className="carousel-item active">
                                 <div className="mb-3">
-                                    <label className="form-label">Username</label>
+                                    <label className="form-label">Nombre de usuario</label>
                                     <input type="text" className="form-control" id="username" />
                                 </div>
                                 <div className="mb-3">
-                                    <label className="form-label">Full name</label>
+                                    <label className="form-label">Nombre completo</label>
                                     <input type="text" className="form-control" id="fullname" />
                                 </div>
                                 <div className="mb-3">
-                                    <label className="form-label">Email address</label>
+                                    <label className="form-label">Email</label>
                                     <input type="email" className="form-control" id="email" aria-describedby="emailHelp" />
                                     <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
                                 </div>
                                 <div className="mb-3">
-                                    <label className="form-label">Password</label>
+                                    <label className="form-label">Contraseña</label>
                                     <input type="password" className="form-control" id="password" />
                                 </div>
                                 <div className="mb-3">
@@ -65,23 +72,31 @@ function Register() {
                                 :
                                 <div className="carousel-item">
                                     <div className="mb-3">
-                                        <label className="form-label">Bank extract</label>
-                                        <input type="text" className="form-control" id="bankExtract"/>
+                                        <label className="form-label">Extracto bancario</label>
+                                        <input type="text" className="form-control" id="extracto"/>
                                     </div>
                                     <div className="mb-3">
-                                        <label className="form-label">Occupation</label>
-                                        <input type="text" className="form-control" id="occupation"/>
+                                        <label className="form-label">Breve descripcion financiera</label>
+                                        <input type="text" className="form-control" id="desc"/>
                                     </div>
                                     <div className="mb-3">
-                                        <label className="form-label">Brief financial description of yourself</label>
-                                        <input type="text" className="form-control" id="bankExtract"/>
+                                        <label className="form-label">Prueba de ingreso</label>
+                                        <input type="text" className="form-control" id="comprobante"/>
+                                    </div>
+                                    <div className="mb-3">
+                                        <label className="form-label">Historial crediticio</label>
+                                        <input type="text" className="form-control" id="historial"/>
                                     </div>
                                 </div>
                             }
                             <div className="carousel-item">
                                 <div className="mb-3">
-                                    <label className="form-label">Wallet address</label>
+                                    <label className="form-label">Dirección wallet</label>
                                     <input type="text" className="form-control" id="wallet" />
+                                </div>
+                                <div className="mb-3">
+                                    <label className="form-label">DNI</label>
+                                    <input type="text" className="form-control" id="dni" />
                                 </div>
                             </div>
                             <div className="carousel-item">

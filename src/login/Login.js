@@ -9,10 +9,9 @@ async function postData(url = "", data = {}) {
     } catch(e) {
         return e;
     } 
-    //return resp;
 }
 
-function Login() {
+function Login({ setUser }) {
 
     function handleChanges(e) {
         e.preventDefault();
@@ -21,12 +20,18 @@ function Login() {
             contrasenna: e.target.password.value,
         };
         console.log(JSON.stringify(data))
-        //console.log(postData(url, data));
+
         postData(url, data).then((r) => {
             console.log(r);
-            if(r.response.data === "User does not exist"){ alert(r.response.data) } 
+            if(r.response.data === "User does not exist")
+            { alert(r.response.data) }
+            else {
+                setUser({
+                    nombreusuario: e.target.username.value,
+                    sessionID: r
+                });
+            } 
         });
-        //if(repsonse.response.status)
     }
 
     return (
