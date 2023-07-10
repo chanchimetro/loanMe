@@ -1,53 +1,58 @@
 import "./pwdReset.css";
 import axios from 'axios';
 
-let url = "http://10.152.2.105:4433/api/auth/changepwd";
+let url = "http://10.152.2.102:4433/api/auth/changepwd";
 
-async function postData(url = "", data = {}) {
+async function postData(url = "", data = {}, user) {
     try {
-        return await axios.post(url, data);
-    } catch(e) {
+        return await axios.patch(url, data, {
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': user.sessionID
+            }
+        });
+    } catch (e) {
         return e;
-    } 
-    //return resp;
+    }
 }
 
-function PwdReset({user}) {
+function PwdReset({ user }) {
 
     function handleChanges(e) {
         e.preventDefault();
         let data = {
-            username: user,
-            contrasenna: e.target.password.value,
-            nuevaContrasenna: e.target.newPassword.value,
+            Usuario: {
+                nombreusuario: user.nombreusuario,
+                contrasenna: e.target.password.value
+            },
+                newPwd: e.target.newPassword.value
         };
+        console.log(user)
         console.log(JSON.stringify(data))
-        //console.log(postData(url, data));
-        postData(url, data).then((r) => {
+        postData(url, data, user).then((r) => {
             console.log(r);
-            if(r.response.data === "Incorrect Password"){ alert(r.response.data) } 
+            //if (r.response.data === "Incorrect Password") { alert(r.response.data) }
         });
-        //if(repsonse.response.status)
     }
 
     return (
-            <div className="changePwd">
-                <h2 className="card-title">Reestablecer Contraseña</h2>
-                <hr></hr>
-                <div className="card-body text-start py-md-4">
-                    <form onSubmit={(e) => handleChanges(e)}>
-                        <div className="mb-3">
-                            <label className="form-label">Contraseña actual</label>
-                            <input type="password" className="form-control" id="password" />
-                        </div>
-                        <div className="mb-3">
-                            <label className="form-label">Nueva contraseña</label>
-                            <input type="password" className="form-control" id="newPassword" />
-                        </div>
-                        <button type="submit" className="btn btn-primary float-end">Submit</button>
-                    </form>
-                </div>
+        <div className="changePwd">
+            <h2 className="card-title">Reestablecer Contraseña</h2>
+            <hr></hr>
+            <div className="card-body text-start py-md-4">
+                <form onSubmit={(e) => handleChanges(e)}>
+                    <div className="mb-3">
+                        <label className="form-label">Contraseña actual</label>
+                        <input type="password" className="form-control" id="password" />
+                    </div>
+                    <div className="mb-3">
+                        <label className="form-label">Nueva contraseña</label>
+                        <input type="password" className="form-control" id="newPassword" />
+                    </div>
+                    <button type="submit" className="btn btn-primary float-end" data-bs-dismiss="modal">Submit</button>
+                </form>
             </div>
+        </div>
     );
 }
 

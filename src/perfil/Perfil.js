@@ -1,7 +1,7 @@
 import "./Perfil.css";
-import PwdChange from "../pwdReset/PwdReset.js"
+import PwdChange from "../pwdReset/pwdReset.js"
 
-function Perfil(user) {
+function Perfil({ user }) {
     return (
         <div>
             <section>
@@ -22,7 +22,7 @@ function Perfil(user) {
                             <div className="card mb-4">
                                 <div className="card-body text-center">
                                     <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar" className="rounded-circle img-fluid" />
-                                    <h5 className="my-3">John Smith</h5>
+                                    <h5 className="my-3">{user.nombreusuario}</h5>
                                     <p className="text-muted mb-1">Full Stack Developer</p>
                                     <p className="text-muted mb-4">Bay Area, San Francisco, CA</p>
                                     <div className="d-flex justify-content-center mb-2">

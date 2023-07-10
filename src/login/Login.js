@@ -1,7 +1,7 @@
 import "./Login.css";
 import axios from 'axios';
 
-let url = "http://10.152.2.101:4433/api/auth/login";
+let url = "http://10.152.2.102:4433/api/auth/login";
 
 async function postData(url = "", data = {}) {
     try {
@@ -48,7 +48,7 @@ function Login({ setUser }) {
                         <label className="form-label">Password</label>
                         <input type="password" className="form-control" id="password" />
                     </div>
-                    <button type="submit" className="btn btn-primary float-end">Submit</button>
+                    <button type="submit" className="btn btn-primary float-end" data-bs-dismiss="modal">Submit</button>
                 </form>
             </div>
         </div>

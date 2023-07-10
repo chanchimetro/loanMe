@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./Register.css";
 import axios from 'axios';
 
-let url = "http://10.152.2.101:4433/api/auth/registro";
+let url = "http://10.152.2.102:4433/api/auth/registro";
 
 
 async function postData(url = "", data = {}) {
@@ -73,19 +73,19 @@ function Register() {
                                 <div className="carousel-item">
                                     <div className="mb-3">
                                         <label className="form-label">Extracto bancario</label>
-                                        <input type="text" className="form-control" id="extracto"/>
+                                        <input type="text" value='' className="form-control" id="extracto"/>
                                     </div>
                                     <div className="mb-3">
                                         <label className="form-label">Breve descripcion financiera</label>
-                                        <input type="text" className="form-control" id="desc"/>
+                                        <input type="text" value='' className="form-control" id="desc"/>
                                     </div>
                                     <div className="mb-3">
                                         <label className="form-label">Prueba de ingreso</label>
-                                        <input type="text" className="form-control" id="comprobante"/>
+                                        <input type="text" value='' className="form-control" id="comprobante"/>
                                     </div>
                                     <div className="mb-3">
                                         <label className="form-label">Historial crediticio</label>
-                                        <input type="text" className="form-control" id="historial"/>
+                                        <input type="text" value='' className="form-control" id="historial"/>
                                     </div>
                                 </div>
                             }
@@ -98,7 +98,7 @@ function Register() {
                                     <label className="form-label">DNI</label>
                                     <input type="text" className="form-control" id="dni" />
                                 </div>
-                                <button type="submit" className="btn btn-primary float-end">Submit</button>
+                                <button type="submit" className="btn btn-primary float-end" data-bs-dismiss="modal">Submit</button>
                             </div>
                         </div>
                         <button className="btn btn-link float-start" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
