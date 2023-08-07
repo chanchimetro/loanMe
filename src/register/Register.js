@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./Register.css";
 import axios from 'axios';
 
-let url = "http://10.152.2.102:4433/api/auth/registro";
+let url = "http://10.152.2.102:4433/api/auth/register";
 
 
 async function postData(url = "", data = {}) {
@@ -15,7 +15,7 @@ function Register() {
 
     function handleChanges(e) {
         e.preventDefault();
-        let Usuario = {
+        let Usuario = { 
             email: e.target.email.value,
             nombreusuario: e.target.username.value,
             contrasenna: e.target.password.value,
@@ -68,7 +68,12 @@ function Register() {
                                 </div>
                             </div>
                             {!prestamista ?
-                                <></>
+                                <div>   
+                                 <input type="hidden" value='x' className="form-control" id="extracto"/>
+                                 <input type="hidden" value='x' className="form-control" id="desc"/>
+                                 <input type="hidden" value='x' className="form-control" id="comprobante"/>
+                                 <input type="hidden" value='x' className="form-control" id="historial"/>
+                                </div>
                                 :
                                 <div className="carousel-item">
                                     <div className="mb-3">

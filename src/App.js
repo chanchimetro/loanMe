@@ -10,14 +10,14 @@ function App() {
 
   useEffect(() => {
     console.log(user)
-  }, []);
+  }, [user]);
 
   return(
       <BrowserRouter>
         <Navbar setUser={setUser} user={user}/>
         <Routes>
           <Route index element={<Home user={ user }/>}></Route>
-          <Route path="/perfil" element={<Perfil user= { user }/>}></Route>
+          <Route path="/perfil" element={<Perfil user= { user } setUser= {setUser}/>}></Route>
           <Route path="/*" element={<p>404 ¯\_(ツ)_/¯</p>}></Route>
         </Routes>
       </BrowserRouter>

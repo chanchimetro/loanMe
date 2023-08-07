@@ -1,7 +1,7 @@
 import "./pwdReset.css";
 import axios from 'axios';
 
-let url = "http://10.152.2.102:4433/api/auth/changepwd";
+let url = "http://10.152.2.102:4433/api/profile/changepwd";
 
 async function postData(url = "", data = {}, user) {
     try {

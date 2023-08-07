@@ -8,6 +8,9 @@ import { Link } from "react-router-dom";
 
 function Navbar({ setUser, user }) {
     const [regis, setRegis] = useState(true);
+
+    console.log("NAVBAR", user);
+
     return (
         <div className="App">
             <nav className="navbar navbar-expand-lg bg-body-tertiary">
@@ -29,7 +32,7 @@ function Navbar({ setUser, user }) {
                         </ul>
                         <div className="d-flex">
                             {
-                                (user === {lol:'lol'})  ? <>
+                                (JSON.stringify(user) === JSON.stringify({lol:'lol'}))  ? <>
                                     <button type="button" className="btn btn-link" data-bs-toggle="modal" onClick={() => setRegis(false)} data-bs-target="#authModal">
                                         Login
                                     </button>

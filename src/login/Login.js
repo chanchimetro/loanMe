@@ -23,7 +23,7 @@ function Login({ setUser }) {
 
         postData(url, {Usuario}).then((r) => {
             console.log(r);
-            if(r.request.status != 200)
+            if(r.request.status !== 200)
             { alert(r.response.data) }
             else {
                 setUser({

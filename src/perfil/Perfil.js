@@ -1,7 +1,44 @@
 import "./Perfil.css";
-import PwdChange from "../pwdReset/pwdReset.js"
+import PwdChange from "../pwdReset/pwdReset.js";
+import axios from 'axios';
+import {redirect, useNavigate} from "react-router-dom";
 
-function Perfil({ user }) {
+let url = "http://10.152.2.102:4433/api/auth/logout";
+
+function Perfil({ user, setUser }) {
+    const navigate = useNavigate();
+
+    const postData = (url = "", data = {}, user, setUser, redirectPath = "") =>  {
+        try {
+            const response = axios.post(url, data, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': user.sessionID
+                }
+            }).then(() => {
+                setUser({lol: 'lol'})
+                console.log(user)
+
+                if (redirectPath) {
+                    navigate(redirectPath);
+                }
+            });
+        } catch (e) {
+            return e;
+        }
+    }
+    /*function handleChanges(e) {
+        e.preventDefault();
+        let data = {};
+        console.log(user)
+        console.log(JSON.stringify(data))
+        postData(url, data, user).then((r) => {
+            console.log(r);
+            
+            //if (r.response.data === "Incorrect Password") { alert(r.response.data) }
+        });
+    }*/
+
     return (
         <div>
             <section>
@@ -23,11 +60,11 @@ function Perfil({ user }) {
                                 <div className="card-body text-center">
                                     <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar" className="rounded-circle img-fluid" />
                                     <h5 className="my-3">{user.nombreusuario}</h5>
-                                    <p className="text-muted mb-1">Full Stack Developer</p>
-                                    <p className="text-muted mb-4">Bay Area, San Francisco, CA</p>
+                                    <p className="text-muted mb-1">{user.dni}</p>
+                                    <p className="text-muted mb-4">{user.tipousuario}</p>
                                     <div className="d-flex justify-content-center mb-2">
                                         <button type="button" className="btn btn-primary" data-bs-toggle="modal" onClick={() => <pwdReset user={user} />} data-bs-target="#pwdChange">Reset pwd</button>
-                                        <button type="button" className="btn btn-outline-primary ms-1">Message</button>
+                                        <button type="button" className="btn btn-outline-primary ms-1" onClick={() => postData(url, {}, user, setUser, "/")}>Logout</button>
                                     </div>
                                 </div>
                             </div>
@@ -36,7 +73,7 @@ function Perfil({ user }) {
                                     <ul className="list-group list-group-flush rounded-3">
                                         <li className="list-group-item d-flex justify-content-between align-items-center p-3">
                                             <i className="fas fa-globe fa-lg text-warning"></i>
-                                            <p className="mb-0">https://mdbootstrap.com</p>
+                                            <p className="mb-0">{user.descripcionfinanciera}</p>
                                         </li>
                                         <li className="list-group-item d-flex justify-content-between align-items-center p-3">
                                             <i className="fab fa-github fa-lg"></i>
