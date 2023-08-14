@@ -2,11 +2,14 @@ import "./Perfil.css";
 import PwdChange from "../pwdReset/pwdReset.js";
 import axios from 'axios';
 import {redirect, useNavigate} from "react-router-dom";
+import { useEffect, useState } from "react";
 
 let url = "http://10.152.2.102:4433/api/auth/logout";
 
 function Perfil({ user, setUser }) {
     const navigate = useNavigate();
+    const [usuario, setUsuario] = useState({});
+
 
     const postData = (url = "", data = {}, user, setUser, redirectPath = "") =>  {
         try {
@@ -26,6 +29,23 @@ function Perfil({ user, setUser }) {
         } catch (e) {
             return e;
         }
+    }
+    
+    useEffect(() => {
+        getUsuario();
+    }, []);
+
+    function getUsuario (url = "http://10.152.2.102:4433/api/profile/getUserInfo", data = {}){
+        console.log("GETUSUARIO", user)
+        axios.get(url, {
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': user.sessionID
+            }
+        }).then((response) => {
+            setUsuario(response.data)
+            console.log(response)
+        });
     }
     /*function handleChanges(e) {
         e.preventDefault();
@@ -59,9 +79,9 @@ function Perfil({ user, setUser }) {
                             <div className="card mb-4">
                                 <div className="card-body text-center">
                                     <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar" className="rounded-circle img-fluid" />
-                                    <h5 className="my-3">{user.nombreusuario}</h5>
-                                    <p className="text-muted mb-1">{user.dni}</p>
-                                    <p className="text-muted mb-4">{user.tipousuario}</p>
+                                    <h5 className="my-3">{usuario.Usuario.nombreusuario}</h5>
+                                    <p className="text-muted mb-1">{usuario.perfil.dni}</p>
+                                    <p className="text-muted mb-4">{usuario.Usuario.tipousuario}</p>
                                     <div className="d-flex justify-content-center mb-2">
                                         <button type="button" className="btn btn-primary" data-bs-toggle="modal" onClick={() => <pwdReset user={user} />} data-bs-target="#pwdChange">Reset pwd</button>
                                         <button type="button" className="btn btn-outline-primary ms-1" onClick={() => postData(url, {}, user, setUser, "/")}>Logout</button>
@@ -73,7 +93,7 @@ function Perfil({ user, setUser }) {
                                     <ul className="list-group list-group-flush rounded-3">
                                         <li className="list-group-item d-flex justify-content-between align-items-center p-3">
                                             <i className="fas fa-globe fa-lg text-warning"></i>
-                                            <p className="mb-0">{user.descripcionfinanciera}</p>
+                                            <p className="mb-0">{usuario.descripcionfinanciera}</p>
                                         </li>
                                         <li className="list-group-item d-flex justify-content-between align-items-center p-3">
                                             <i className="fab fa-github fa-lg"></i>
@@ -139,7 +159,7 @@ function Perfil({ user, setUser }) {
                                             <p className="mb-0">Address</p>
                                         </div>
                                         <div className="col-sm-9">
-                                            <p className="text-muted mb-0">Bay Area, San Francisco, CA</p>
+                                        <button type="button" className="btn btn-outline-primary ms-1" onClick={() => postData(url, {}, user, setUser, "/")}>Logout</button>
                                         </div>
                                     </div>
                                 </div>
